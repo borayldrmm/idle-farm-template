@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/game/main.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/game/resource_manager.gd" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/ui/chest_shop.tscn" id="4"]
 [ext_resource type="Script" path="res://scripts/ui/plot_list.gd" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/ui/ad_buttons.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/ui/quest_panel.tscn" id="7"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1")
@@ -44,6 +45,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="AdButtons" parent="CanvasLayer/Root" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="QuestPanel" parent="CanvasLayer/Root" instance=ExtResource("7")]
 layout_mode = 2
 
 [node name="SaveButton" type="Button" parent="CanvasLayer/Root"]

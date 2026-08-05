@@ -50,6 +50,29 @@ func setup(resource_manager: ResourceManager) -> void:
 	_resource_manager = resource_manager
 
 
+## Returns every loaded quest of [param quest_type], for building a
+## quest list UI.
+func get_quests(quest_type: QuestConfig.QuestType) -> Array[QuestConfig]:
+	var result: Array[QuestConfig] = []
+	for quest_id: String in _quests.keys():
+		var config: QuestConfig = _quests[quest_id] as QuestConfig
+		if config.quest_type == quest_type:
+			result.append(config)
+	return result
+
+
+## Returns the current progress amount for [param quest_id], or 0.0 if
+## it has no recorded progress yet.
+func get_quest_progress(quest_id: String) -> float:
+	return _progress.get(quest_id, 0.0)
+
+
+## Returns true if [param quest_id]'s reward has already been claimed
+## this period.
+func is_quest_claimed(quest_id: String) -> bool:
+	return quest_id in _claimed_quest_ids
+
+
 ## Claims the reward for [param quest_id] if its progress has reached
 ## its target and it hasn't already been claimed this period. Grants
 ## the reward through GameManager and reports completion via
