@@ -27,7 +27,7 @@ func unregister_plot(plot: FarmPlot) -> void:
 ## Returns the combined production rate, in resource units per
 ## second, across every registered plot.
 func get_total_production_rate() -> float:
-	var total := 0.0
+	var total: float = 0.0
 	for plot in _plots:
 		total += plot.get_production_rate()
 	return total
@@ -37,11 +37,11 @@ func get_total_production_rate() -> float:
 ## was closed, capped at config.max_offline_progress_seconds. Returns
 ## the number of coins granted.
 func apply_offline_progress() -> int:
-	var offline_seconds := _get_capped_offline_seconds()
+	var offline_seconds: float = _get_capped_offline_seconds()
 	if offline_seconds <= 0.0:
 		return 0
 
-	var earned_coins := int(round(get_total_production_rate() * offline_seconds))
+	var earned_coins: int = int(round(get_total_production_rate() * offline_seconds))
 	if earned_coins > 0:
 		GameManager.add_coins(earned_coins)
 
@@ -52,10 +52,10 @@ func apply_offline_progress() -> int:
 ## capped at the configured offline progress limit. Returns 0 if there
 ## is no prior save to measure from.
 func _get_capped_offline_seconds() -> float:
-	var last_save_timestamp := GameManager.last_save_timestamp
+	var last_save_timestamp: int = GameManager.last_save_timestamp
 	if last_save_timestamp <= 0:
 		return 0.0
 
-	var now := Time.get_unix_time_from_system()
-	var elapsed_seconds := max(0.0, now - last_save_timestamp)
+	var now: float = Time.get_unix_time_from_system()
+	var elapsed_seconds: float = max(0.0, now - last_save_timestamp)
 	return min(elapsed_seconds, GameManager.config.max_offline_progress_seconds)
