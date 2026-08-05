@@ -10,6 +10,7 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="Content"]
 layout_mode = 2
+theme_type_variation = &"TitleLabel"
 text = "Quests"
 
 [node name="Tabs" type="TabContainer" parent="Content"]

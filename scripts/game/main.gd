@@ -14,15 +14,25 @@ const FARM_CONFIG_PATH: String = "res://data/farm_config.tres"
 @onready var _plot_list: PlotList = $CanvasLayer/Root/ContentScroll/ScrollContent/PlotList
 @onready var _ad_buttons: AdButtons = $CanvasLayer/Root/ContentScroll/ScrollContent/AdButtons
 @onready var _save_button: Button = $CanvasLayer/Root/SaveButton
+@onready var _background: ColorRect = $CanvasLayer/Background
 
 
 func _ready() -> void:
+	_apply_background_color()
 	_save_button.pressed.connect(GameManager.save_game)
 	_ad_buttons.setup(_resource_manager)
 	QuestManager.setup(_resource_manager)
 	_spawn_farm_plots()
 	_apply_offline_progress()
 	_start_status_timer()
+
+
+## Applies ThemeConfig's background_color to the backdrop ColorRect,
+## so the palette's single source of truth stays in config, not baked
+## as a duplicate literal into main.tscn.
+func _apply_background_color() -> void:
+	var theme_config: ThemeConfig = ThemeConfig.new()
+	_background.color = theme_config.background_color
 
 
 ## Creates [constant FARM_PLOT_COUNT] plots using the default
