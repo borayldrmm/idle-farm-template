@@ -24,6 +24,7 @@ static func try_upgrade(plot: FarmPlot) -> bool:
 		return false
 
 	plot.level_up()
+	EventBus.on_plot_upgraded.emit(plot.level)
 	return true
 
 

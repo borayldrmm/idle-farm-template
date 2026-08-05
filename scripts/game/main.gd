@@ -19,6 +19,7 @@ const FARM_CONFIG_PATH: String = "res://data/farm_config.tres"
 func _ready() -> void:
 	_save_button.pressed.connect(GameManager.save_game)
 	_ad_buttons.setup(_resource_manager)
+	QuestManager.setup(_resource_manager)
 	_spawn_farm_plots()
 	_apply_offline_progress()
 	_start_status_timer()

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="QuestConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/quest_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = "daily_collect_coins"
+quest_name = "Coin Collector"
+description = "Collect 500 coins today."
+quest_type = 0
+objective_type = 0
+target_amount = 500.0
+reward_type = 0
+reward_amount = 100

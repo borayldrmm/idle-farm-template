@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="QuestConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/quest_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = "weekly_collect_coins"
+quest_name = "Coin Hoarder"
+description = "Collect 5000 coins this week."
+quest_type = 1
+objective_type = 0
+target_amount = 5000.0
+reward_type = 1
+reward_amount = 150

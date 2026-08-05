@@ -43,3 +43,14 @@ signal on_boost_started(duration_seconds: float)
 
 ## Emitted when an active production boost ends.
 signal on_boost_ended()
+
+## Emitted whenever a FarmPlot finishes leveling up, reporting its new
+## level. Drives QuestManager's UPGRADE_PLOT objective.
+signal on_plot_upgraded(new_level: int)
+
+## Emitted whenever a quest's progress changes.
+signal on_quest_progress_updated(quest_id: String, current: float, target: float)
+
+## Emitted when a quest's reward has been claimed. [param reward_type]
+## is a QuestConfig.RewardType name (e.g. "COINS").
+signal on_quest_completed(quest_id: String, reward_type: String, reward_amount: int)

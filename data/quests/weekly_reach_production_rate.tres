@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="QuestConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/quest_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = "weekly_reach_production_rate"
+quest_name = "Production Master"
+description = "Reach a total production rate of 10 coins per second."
+quest_type = 1
+objective_type = 3
+target_amount = 10.0
+reward_type = 1
+reward_amount = 100
