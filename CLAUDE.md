@@ -45,15 +45,17 @@ GitHub: https://github.com/borayldrmm/idle-farm-template
 - [x] Core loop (üret → harca → upgrade)
 - [x] Manager sistemi + offline progress
 - [x] UI sistemi
-- [ ] Sandık + IAP sistemi
+- [x] Sandık + IAP sistemi
 - [ ] Reklam entegrasyonu
 - [ ] Görev sistemi
 - [ ] iOS + Android build
 - [ ] Store yayını
 
 ## Mevcut Durum
-Core loop, UI, save/load ve offline progress test edildi, hepsi çalışıyor.
-Şablon mekanik olarak sağlam. Sıradaki adım: Sandık sistemi ve IAP altyapısı.
+Sandık sistemi tamamlandı ve test edildi. 3 tier çalışıyor,
+rarity sistemi doğru, gem harcama doğru.
+Sıradaki adım: Reklam entegrasyonu (rewarded + interstitial).
 
 ## Bir Sonraki Adım
-Sandık sistemi: 3 tier (standard, gold, platinum), item drop, gem ekonomisi.
+Reklam sistemi: AdManager autoload, rewarded ad (2x boost),
+interstitial ad, reklamsız IAP paketi altyapısı.
