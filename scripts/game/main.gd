@@ -23,10 +23,10 @@ func _ready() -> void:
 ## Creates [constant FARM_PLOT_COUNT] plots using the default
 ## FarmConfig and registers each with the ResourceManager.
 func _spawn_farm_plots() -> void:
-	var farm_config: FarmConfig = load(FARM_CONFIG_PATH)
+	var farm_config: FarmConfig = load(FARM_CONFIG_PATH) as FarmConfig
 
-	for i in range(FARM_PLOT_COUNT):
-		var plot := FarmPlot.new()
+	for i: int in range(FARM_PLOT_COUNT):
+		var plot: FarmPlot = FarmPlot.new()
 		plot.name = "FarmPlot%d" % (i + 1)
 		plot.config = farm_config
 		add_child(plot)
@@ -36,13 +36,13 @@ func _spawn_farm_plots() -> void:
 ## Grants coins earned while the game was closed, if any, and prints
 ## the result.
 func _apply_offline_progress() -> void:
-	var earned_coins := _resource_manager.apply_offline_progress()
+	var earned_coins: int = _resource_manager.apply_offline_progress()
 	if earned_coins > 0:
 		print("Offline progress: earned %d coins" % earned_coins)
 
 
 func _start_status_timer() -> void:
-	var status_timer := Timer.new()
+	var status_timer: Timer = Timer.new()
 	status_timer.wait_time = PRINT_INTERVAL_SECONDS
 	status_timer.autostart = true
 	status_timer.timeout.connect(_print_status)
@@ -50,5 +50,5 @@ func _start_status_timer() -> void:
 
 
 func _print_status() -> void:
-	var total_rate := _resource_manager.get_total_production_rate()
+	var total_rate: float = _resource_manager.get_total_production_rate()
 	print("Coins: %d | Total production rate: %.2f/sec" % [GameManager.coins, total_rate])
