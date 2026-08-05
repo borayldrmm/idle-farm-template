@@ -47,14 +47,15 @@ GitHub: https://github.com/borayldrmm/idle-farm-template
 - [x] UI sistemi
 - [x] Sandık + IAP sistemi
 - [x] Reklam entegrasyonu
-- [ ] Görev sistemi
+- [x] Görev sistemi
 - [ ] iOS + Android build
 - [ ] Store yayını
 
 ## Mevcut Durum
-Reklam sistemi tamamlandı. 2x boost ve speed up rewarded ad çalışıyor,
-cooldown sistemi aktif, mock provider production'da gerçek SDK ile değiştirilebilir.
-Sıradaki adım: Görev sistemi.
+Tüm core sistemler tamamlandı ve test edildi: core loop, UI,
+save/load, offline progress, sandık sistemi, reklam sistemi,
+görev sistemi. Şablon mekanik olarak eksiksiz.
+Sıradaki adım: iOS + Android build ayarları.
 
 ## Bir Sonraki Adım
-Görev sistemi: günlük/haftalık görevler, görev takibi, ödül dağıtımı.
+iOS + Android export ayarları, build alma, store yayın hazırlığı.
