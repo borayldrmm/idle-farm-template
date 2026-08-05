@@ -16,6 +16,10 @@ text = "Quest"
 layout_mode = 2
 text = ""
 
+[node name="RewardLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "Reward:"
+
 [node name="ProgressLabel" type="Label" parent="Content"]
 layout_mode = 2
 text = "0/0"

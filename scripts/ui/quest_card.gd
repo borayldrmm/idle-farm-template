@@ -12,6 +12,7 @@ extends PanelContainer
 
 @onready var _quest_name_label: Label = $Content/QuestNameLabel
 @onready var _description_label: Label = $Content/DescriptionLabel
+@onready var _reward_label: Label = $Content/RewardLabel
 @onready var _progress_label: Label = $Content/ProgressLabel
 @onready var _progress_bar: ProgressBar = $Content/ProgressBar
 @onready var _claim_button: Button = $Content/ClaimButton
@@ -32,6 +33,7 @@ func setup(config: QuestConfig, current_progress: float, is_claimed: bool) -> vo
 
 	_quest_name_label.text = config.quest_name
 	_description_label.text = config.description
+	_reward_label.text = _format_reward_text(config.reward_type, config.reward_amount)
 
 	update_progress(current_progress, config.target_amount)
 	if is_claimed:
@@ -55,6 +57,21 @@ func mark_completed() -> void:
 
 func _on_claim_button_pressed() -> void:
 	QuestManager.complete_quest(_quest_id)
+
+
+func _format_reward_text(reward_type: QuestConfig.RewardType, reward_amount: int) -> String:
+	var currency_label: String = _get_reward_currency_label(reward_type)
+	return "Reward: %d %s" % [reward_amount, currency_label]
+
+
+func _get_reward_currency_label(reward_type: QuestConfig.RewardType) -> String:
+	match reward_type:
+		QuestConfig.RewardType.COINS:
+			return "coins"
+		QuestConfig.RewardType.GEMS:
+			return "gems"
+		_:
+			return "reward"
 
 
 func _format_progress_text(current_progress: float, target_amount: float) -> String:
