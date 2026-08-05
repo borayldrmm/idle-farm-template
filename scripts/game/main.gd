@@ -1,27 +1,30 @@
 extends Node2D
 ## Manual test harness for the core loop (FarmPlot, UpgradeSystem,
-## ResourceManager).
+## ResourceManager) and the UI that presents it.
 ##
-## Spawns a handful of plots, wires each one into the HUD, applies any
-## offline progress, then prints coin balance and total production
-## rate on an interval as a console cross-check.
+## Spawns a handful of plots, wires each one into the plot list,
+## applies any offline progress, then prints coin balance and total
+## production rate on an interval as a console cross-check.
 
 const FARM_PLOT_COUNT: int = 3
 const PRINT_INTERVAL_SECONDS: float = 5.0
 const FARM_CONFIG_PATH: String = "res://data/farm_config.tres"
 
 @onready var _resource_manager: ResourceManager = $ResourceManager
-@onready var _hud: HUD = $HUD
+@onready var _plot_list: PlotList = $CanvasLayer/Root/PlotScroll/PlotList
+@onready var _save_button: Button = $CanvasLayer/Root/SaveButton
 
 
 func _ready() -> void:
+	_save_button.pressed.connect(GameManager.save_game)
 	_spawn_farm_plots()
 	_apply_offline_progress()
 	_start_status_timer()
 
 
 ## Creates [constant FARM_PLOT_COUNT] plots using the default
-## FarmConfig and registers each with the ResourceManager.
+## FarmConfig, registers each with the ResourceManager, and gives it
+## a card in the plot list.
 func _spawn_farm_plots() -> void:
 	var farm_config: FarmConfig = load(FARM_CONFIG_PATH) as FarmConfig
 
@@ -31,7 +34,7 @@ func _spawn_farm_plots() -> void:
 		plot.config = farm_config
 		add_child(plot)
 		_resource_manager.register_plot(plot)
-		_hud.add_plot_card(plot)
+		_plot_list.add_plot_card(plot)
 
 
 ## Grants coins earned while the game was closed, if any, and prints
