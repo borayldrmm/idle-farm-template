@@ -45,6 +45,16 @@ static func open_chest(chest_type: ChestConfig.ChestType) -> Array[ItemConfig]:
 	return dropped_items
 
 
+## Returns the gem cost to open a chest of [param chest_type], or -1
+## if no config is registered for that type. Lets UI check
+## affordability without duplicating chest cost data.
+static func get_chest_cost(chest_type: ChestConfig.ChestType) -> int:
+	var config: ChestConfig = _load_chest_config(chest_type)
+	if config == null:
+		return -1
+	return config.gem_cost
+
+
 static func _load_chest_config(chest_type: ChestConfig.ChestType) -> ChestConfig:
 	if not CHEST_CONFIG_PATHS.has(chest_type):
 		push_error("ChestSystem: no config path registered for chest type %d" % chest_type)
