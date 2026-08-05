@@ -42,7 +42,7 @@ GitHub: https://github.com/borayldrmm/idle-farm-template
 ## Aşamalar
 - [x] Godot kurulum + proje yapısı
 - [x] GitHub repo + CLAUDE.md
-- [ ] Core loop (üret → harca → upgrade)
+- [x] Core loop (üret → harca → upgrade)
 - [ ] Manager sistemi + offline progress
 - [ ] UI sistemi
 - [ ] Sandık + IAP sistemi
@@ -52,7 +52,8 @@ GitHub: https://github.com/borayldrmm/idle-farm-template
 - [ ] Store yayını
 
 ## Mevcut Durum
-Core autoload sistemi tamamlandı. GameConfig, GameManager, EventBus hazır. Sıradaki adım: Core loop — kaynak üretimi, upgrade sistemi.
+Core loop test edildi ve çalışıyor. 3 FarmPlot, 3 coin/sn üretiyor.
+Sıradaki adım: Manager sistemi ve offline progress doğrulaması, ardından UI.
 
 ## Bir Sonraki Adım
-Core loop sistemi: FarmPlot (tarla), ResourceProducer, UpgradeSystem sahneleri ve scriptleri.
+Main sahnesine UI ekle: coin sayacı, farm plot kartları, upgrade butonu.
