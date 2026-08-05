@@ -7,9 +7,9 @@ extends Node2D
 ## UI — verification is done by reading the output console. Not part
 ## of the shipping game; replace with real UI once it exists.
 
-const FARM_PLOT_COUNT := 3
-const PRINT_INTERVAL_SECONDS := 5.0
-const FARM_CONFIG_PATH := "res://data/farm_config.tres"
+const FARM_PLOT_COUNT: int = 3
+const PRINT_INTERVAL_SECONDS: float = 5.0
+const FARM_CONFIG_PATH: String = "res://data/farm_config.tres"
 
 @onready var _resource_manager: ResourceManager = $ResourceManager
 
