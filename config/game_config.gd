@@ -30,7 +30,7 @@ extends Resource
 @export var starting_coins: int = 100
 
 ## Amount of gems a new save starts with.
-@export var starting_gems: int = 10
+@export var starting_gems: int = 1000
 
 @export_group("Offline Progress")
 
