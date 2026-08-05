@@ -12,11 +12,13 @@ const FARM_CONFIG_PATH: String = "res://data/farm_config.tres"
 
 @onready var _resource_manager: ResourceManager = $ResourceManager
 @onready var _plot_list: PlotList = $CanvasLayer/Root/PlotScroll/PlotList
+@onready var _ad_buttons: AdButtons = $CanvasLayer/Root/AdButtons
 @onready var _save_button: Button = $CanvasLayer/Root/SaveButton
 
 
 func _ready() -> void:
 	_save_button.pressed.connect(GameManager.save_game)
+	_ad_buttons.setup(_resource_manager)
 	_spawn_farm_plots()
 	_apply_offline_progress()
 	_start_status_timer()
