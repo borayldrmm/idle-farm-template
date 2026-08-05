@@ -2,16 +2,16 @@ extends Node2D
 ## Manual test harness for the core loop (FarmPlot, UpgradeSystem,
 ## ResourceManager).
 ##
-## Spawns a handful of plots, applies any offline progress, then
-## prints coin balance and total production rate on an interval. No
-## UI — verification is done by reading the output console. Not part
-## of the shipping game; replace with real UI once it exists.
+## Spawns a handful of plots, wires each one into the HUD, applies any
+## offline progress, then prints coin balance and total production
+## rate on an interval as a console cross-check.
 
 const FARM_PLOT_COUNT: int = 3
 const PRINT_INTERVAL_SECONDS: float = 5.0
 const FARM_CONFIG_PATH: String = "res://data/farm_config.tres"
 
 @onready var _resource_manager: ResourceManager = $ResourceManager
+@onready var _hud: HUD = $HUD
 
 
 func _ready() -> void:
@@ -31,6 +31,7 @@ func _spawn_farm_plots() -> void:
 		plot.config = farm_config
 		add_child(plot)
 		_resource_manager.register_plot(plot)
+		_hud.add_plot_card(plot)
 
 
 ## Grants coins earned while the game was closed, if any, and prints

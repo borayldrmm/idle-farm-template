@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/farm_plot_card.gd" id="1"]
+
+[node name="FarmPlotCard" type="PanelContainer"]
+script = ExtResource("1")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PlotNameLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "Farm Plot"
+
+[node name="ProductionLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "0.00 coin/sec"
+
+[node name="CostLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "Upgrade cost: 0"
+
+[node name="UpgradeButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Upgrade"
