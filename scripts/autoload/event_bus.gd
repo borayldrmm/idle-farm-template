@@ -24,3 +24,7 @@ signal on_game_saved()
 
 ## Emitted after the game state has been successfully loaded from disk.
 signal on_game_loaded()
+
+## Emitted after a chest is opened, reporting the chest tier's name
+## (e.g. "STANDARD") and the items that were rolled.
+signal on_chest_opened(chest_type: String, items: Array)

@@ -30,6 +30,9 @@ var play_time: float = 0.0
 ## the next load.
 var last_save_timestamp: int = 0
 
+## Items the player has collected from chests.
+var owned_items: Array[ItemConfig] = []
+
 
 func _ready() -> void:
 	_load_config()
@@ -88,6 +91,13 @@ func spend_gems(amount: int) -> bool:
 	return true
 
 
+## Adds [param item] to the player's owned items inventory.
+func add_item(item: ItemConfig) -> void:
+	if item == null:
+		return
+	owned_items.append(item)
+
+
 ## Serializes the current game state to disk as JSON.
 ## Returns [code]true[/code] on success, [code]false[/code] if the save
 ## file could not be written.
@@ -140,8 +150,18 @@ func _build_save_data() -> Dictionary:
 		"gems": gems,
 		"play_time": play_time,
 		"last_save_timestamp": last_save_timestamp,
+		"owned_items": _serialize_owned_items(),
 		"game_version": config.game_version,
 	}
+
+
+## Converts [member owned_items] into a plain array of resource paths,
+## since ItemConfig resources cannot be serialized to JSON directly.
+func _serialize_owned_items() -> Array[String]:
+	var paths: Array[String] = []
+	for item: ItemConfig in owned_items:
+		paths.append(item.resource_path)
+	return paths
 
 
 ## Applies a parsed save [Dictionary] to the current state. Missing or
@@ -152,3 +172,18 @@ func _apply_save_data(data: Dictionary) -> void:
 	gems = data.get("gems", config.starting_gems)
 	play_time = data.get("play_time", 0.0)
 	last_save_timestamp = data.get("last_save_timestamp", 0)
+	owned_items = _deserialize_owned_items(data.get("owned_items", []))
+
+
+## Reloads each owned item from its saved resource path. Paths that
+## are malformed or no longer resolve to an ItemConfig are skipped
+## rather than failing the whole load.
+func _deserialize_owned_items(paths: Array) -> Array[ItemConfig]:
+	var items: Array[ItemConfig] = []
+	for path: Variant in paths:
+		if typeof(path) != TYPE_STRING:
+			continue
+		var item: ItemConfig = load(path) as ItemConfig
+		if item != null:
+			items.append(item)
+	return items
