@@ -46,16 +46,15 @@ GitHub: https://github.com/borayldrmm/idle-farm-template
 - [x] Manager sistemi + offline progress
 - [x] UI sistemi
 - [x] Sandık + IAP sistemi
-- [ ] Reklam entegrasyonu
+- [x] Reklam entegrasyonu
 - [ ] Görev sistemi
 - [ ] iOS + Android build
 - [ ] Store yayını
 
 ## Mevcut Durum
-Sandık sistemi tamamlandı ve test edildi. 3 tier çalışıyor,
-rarity sistemi doğru, gem harcama doğru.
-Sıradaki adım: Reklam entegrasyonu (rewarded + interstitial).
+Reklam sistemi tamamlandı. 2x boost ve speed up rewarded ad çalışıyor,
+cooldown sistemi aktif, mock provider production'da gerçek SDK ile değiştirilebilir.
+Sıradaki adım: Görev sistemi.
 
 ## Bir Sonraki Adım
-Reklam sistemi: AdManager autoload, rewarded ad (2x boost),
-interstitial ad, reklamsız IAP paketi altyapısı.
+Görev sistemi: günlük/haftalık görevler, görev takibi, ödül dağıtımı.
