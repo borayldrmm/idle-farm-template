@@ -25,6 +25,11 @@ var gems: int = 0
 ## Total accumulated play time, in seconds, across all sessions.
 var play_time: float = 0.0
 
+## Unix timestamp (seconds) of the last successful save. Used by
+## ResourceManager to compute how much offline progress to grant on
+## the next load.
+var last_save_timestamp: int = 0
+
 
 func _ready() -> void:
 	_load_config()
@@ -87,6 +92,7 @@ func spend_gems(amount: int) -> bool:
 ## Returns [code]true[/code] on success, [code]false[/code] if the save
 ## file could not be written.
 func save_game() -> bool:
+	last_save_timestamp = int(Time.get_unix_time_from_system())
 	var save_data := _build_save_data()
 	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 
@@ -133,6 +139,7 @@ func _build_save_data() -> Dictionary:
 		"coins": coins,
 		"gems": gems,
 		"play_time": play_time,
+		"last_save_timestamp": last_save_timestamp,
 		"game_version": config.game_version,
 	}
 
@@ -144,3 +151,4 @@ func _apply_save_data(data: Dictionary) -> void:
 	coins = data.get("coins", config.starting_coins)
 	gems = data.get("gems", config.starting_gems)
 	play_time = data.get("play_time", 0.0)
+	last_save_timestamp = data.get("last_save_timestamp", 0)

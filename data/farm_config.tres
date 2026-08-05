@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FarmConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/farm_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+base_production_rate = 1.0
+base_upgrade_cost = 50
+upgrade_cost_multiplier = 1.15
