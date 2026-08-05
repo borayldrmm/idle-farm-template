@@ -40,8 +40,8 @@ GitHub: https://github.com/borayldrmm/idle-farm-template
 - Mekanikler dokunulmaz, sadece tema değişir
 
 ## Aşamalar
-- [ ] Godot kurulum + proje yapısı
-- [ ] GitHub repo + CLAUDE.md
+- [x] Godot kurulum + proje yapısı
+- [x] GitHub repo + CLAUDE.md
 - [ ] Core loop (üret → harca → upgrade)
 - [ ] Manager sistemi + offline progress
 - [ ] UI sistemi
@@ -52,7 +52,7 @@ GitHub: https://github.com/borayldrmm/idle-farm-template
 - [ ] Store yayını
 
 ## Mevcut Durum
-Kurulum aşaması. Godot indirildi, GitHub repo açıldı, Claude Code kuruldu.
+Core autoload sistemi tamamlandı. GameConfig, GameManager, EventBus hazır. Sıradaki adım: Core loop — kaynak üretimi, upgrade sistemi.
 
 ## Bir Sonraki Adım
-Godot proje yapısını oluşturmak.
+Core loop sistemi: FarmPlot (tarla), ResourceProducer, UpgradeSystem sahneleri ve scriptleri.
