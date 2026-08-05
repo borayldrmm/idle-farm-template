@@ -11,10 +11,9 @@ config_version=5
 [application]
 
 config/name="idle-farm-template"
+run/main_scene="res://scenes/game/main.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
-
-run/main_scene="res://scenes/game/main.tscn"
 
 [autoload]
 
