@@ -43,3 +43,17 @@ extends Resource
 ## Minimum time, in seconds, players must wait between watching
 ## rewarded ads.
 @export var ad_cooldown_seconds: float = 60.0
+
+## Minimum time, in seconds, players must wait between watching
+## rewarded ads. Used by AdManager's cooldown check.
+@export var rewarded_ad_cooldown_seconds: float = 300.0
+
+## Number of player actions between automatic interstitial ad
+## opportunities.
+@export var interstitial_ad_interval: int = 3
+
+@export_group("Boost")
+
+## Duration, in seconds, of the production boost granted by a
+## completed rewarded ad.
+@export var boost_duration_seconds: float = 120.0

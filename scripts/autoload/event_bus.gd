@@ -28,3 +28,18 @@ signal on_game_loaded()
 ## Emitted after a chest is opened, reporting the chest tier's name
 ## (e.g. "STANDARD") and the items that were rolled.
 signal on_chest_opened(chest_type: String, items: Array)
+
+## Emitted when a rewarded ad completes successfully and the player
+## has earned their reward.
+signal on_rewarded_ad_completed()
+
+## Emitted when an ad could not be shown (removed, on cooldown, not
+## ready, or failed). [param ad_type] is an AdManager.AdType value.
+signal on_ad_failed(ad_type: int)
+
+## Emitted when a production boost starts, reporting its duration in
+## seconds.
+signal on_boost_started(duration_seconds: float)
+
+## Emitted when an active production boost ends.
+signal on_boost_ended()

@@ -28,8 +28,14 @@ var production_rate: float = 0.0
 
 var _production_timer: Timer
 
+## Multiplier applied on top of level-based production, driven by
+## temporary boosts (see RewardSystem). 1.0 means no boost is active.
+var _boost_multiplier: float = 1.0
+
 
 func _ready() -> void:
+	EventBus.on_boost_started.connect(_on_boost_started)
+	EventBus.on_boost_ended.connect(_on_boost_ended)
 	_recalculate_production_rate()
 	_start_production_timer()
 
@@ -51,7 +57,17 @@ func _recalculate_production_rate() -> void:
 	if config == null:
 		push_error("FarmPlot: no FarmConfig assigned, cannot compute production rate")
 		return
-	production_rate = config.base_production_rate * level
+	production_rate = config.base_production_rate * level * _boost_multiplier
+
+
+func _on_boost_started(_duration_seconds: float) -> void:
+	_boost_multiplier = 2.0
+	_recalculate_production_rate()
+
+
+func _on_boost_ended() -> void:
+	_boost_multiplier = 1.0
+	_recalculate_production_rate()
 
 
 func _start_production_timer() -> void:
