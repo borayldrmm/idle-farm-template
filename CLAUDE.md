@@ -48,14 +48,14 @@ GitHub: https://github.com/borayldrmm/idle-farm-template
 - [x] Sandık + IAP sistemi
 - [x] Reklam entegrasyonu
 - [x] Görev sistemi
-- [ ] iOS + Android build
+- [x] iOS + Android build
 - [ ] Store yayını
 
 ## Mevcut Durum
-Tüm core sistemler tamamlandı ve test edildi: core loop, UI,
-save/load, offline progress, sandık sistemi, reklam sistemi,
-görev sistemi. Şablon mekanik olarak eksiksiz.
-Sıradaki adım: iOS + Android build ayarları.
+Android APK başarıyla oluşturuldu. iOS için Xcode indiriliyor.
+Şablon tüm mekanikler, UI, build sistemi ile tamamlandı.
+Sıradaki adım: Store yayını hazırlığı.
 
 ## Bir Sonraki Adım
-iOS + Android export ayarları, build alma, store yayın hazırlığı.
+Google Play Store ve App Store yayın hazırlığı:
+store sayfası, ekran görüntüleri, açıklama, fiyatlandırma.
