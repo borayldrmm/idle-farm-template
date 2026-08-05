@@ -11,8 +11,8 @@ const PRINT_INTERVAL_SECONDS: float = 5.0
 const FARM_CONFIG_PATH: String = "res://data/farm_config.tres"
 
 @onready var _resource_manager: ResourceManager = $ResourceManager
-@onready var _plot_list: PlotList = $CanvasLayer/Root/PlotScroll/PlotList
-@onready var _ad_buttons: AdButtons = $CanvasLayer/Root/AdButtons
+@onready var _plot_list: PlotList = $CanvasLayer/Root/ContentScroll/ScrollContent/PlotList
+@onready var _ad_buttons: AdButtons = $CanvasLayer/Root/ContentScroll/ScrollContent/AdButtons
 @onready var _save_button: Button = $CanvasLayer/Root/SaveButton
 
 

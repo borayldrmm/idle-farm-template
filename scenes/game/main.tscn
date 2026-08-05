@@ -26,28 +26,35 @@ grow_vertical = 2
 [node name="HUD" parent="CanvasLayer/Root" instance=ExtResource("3")]
 layout_mode = 2
 
-[node name="TopSeparator" type="HSeparator" parent="CanvasLayer/Root"]
-layout_mode = 2
-
-[node name="PlotScroll" type="ScrollContainer" parent="CanvasLayer/Root"]
+[node name="ContentScroll" type="ScrollContainer" parent="CanvasLayer/Root"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlotList" type="VBoxContainer" parent="CanvasLayer/Root/PlotScroll"]
+[node name="ScrollContent" type="VBoxContainer" parent="CanvasLayer/Root/ContentScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlotList" type="VBoxContainer" parent="CanvasLayer/Root/ContentScroll/ScrollContent"]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5")
 
-[node name="BottomSeparator" type="HSeparator" parent="CanvasLayer/Root"]
+[node name="Separator1" type="HSeparator" parent="CanvasLayer/Root/ContentScroll/ScrollContent"]
 layout_mode = 2
 
-[node name="ChestShop" parent="CanvasLayer/Root" instance=ExtResource("4")]
+[node name="ChestShop" parent="CanvasLayer/Root/ContentScroll/ScrollContent" instance=ExtResource("4")]
 layout_mode = 2
 
-[node name="AdButtons" parent="CanvasLayer/Root" instance=ExtResource("6")]
+[node name="Separator2" type="HSeparator" parent="CanvasLayer/Root/ContentScroll/ScrollContent"]
 layout_mode = 2
 
-[node name="QuestPanel" parent="CanvasLayer/Root" instance=ExtResource("7")]
+[node name="AdButtons" parent="CanvasLayer/Root/ContentScroll/ScrollContent" instance=ExtResource("6")]
+layout_mode = 2
+
+[node name="Separator3" type="HSeparator" parent="CanvasLayer/Root/ContentScroll/ScrollContent"]
+layout_mode = 2
+
+[node name="QuestPanel" parent="CanvasLayer/Root/ContentScroll/ScrollContent" instance=ExtResource("7")]
 layout_mode = 2
 
 [node name="SaveButton" type="Button" parent="CanvasLayer/Root"]
